@@ -34,15 +34,61 @@ The maximum possible groupings of adjacent ones are already shown in the figure.
 
 **Procedure**
 
-/* write all the steps invloved */
+1 Open Quartus software and create a new project.
+2 Create a new VHDL file and write the code for the SR Flip Flop.
+3 Compile the design by clicking on "Processing" -> "Start Compilation".
+4 Create a testbench file to simulate the design.
+5 Write the testbench code and add stimulus to test the SR Flip Flop.
+6 Run the simulation by clicking on "Processing" -> "Start Simulation"
+. 7 Observe the waveforms and verify the SR Flip Flop behavior. 
+8 Analyze the results and make any necessary changes to the design.
 
 **PROGRAM**
+del :imthiyas ahamed.m ,212224050012
 
-/* Program for flipflops and verify its truth table in quartus using Verilog programming. Developed by: RegisterNumber:
-*/
+
+module  ex6(s, r, clk, rst, q);
+
+  input s, r, clk, rst;
+  
+  output reg q;
+
+
+  always @(posedge clk or posedge rst)
+begin
+
+    if (rst)
+    
+    q <= 0; // Reset the flip-flop
+    
+    else
+    
+begin
+
+      case ({s, r}) // S and R control the behavior
+      
+        2'b00: q <= q; // No change
+        
+        2'b01: q <= 0; // Reset
+        
+        2'b10: q <= 1; // Set
+        
+        2'b11: q <= 0; // Invalid state, typically treated as reset
+        
+      endcase
+      
+     end
+     
+  end
+  
+endmodule
 
 **RTL LOGIC FOR FLIPFLOPS**
+![441196875-69a53083-c203-4697-bc4e-04b2f40a1634](https://github.com/user-attachments/assets/5602cc19-6413-40c1-b31b-380f2b45cf9f)
+
 
 **TIMING DIGRAMS FOR FLIP FLOPS**
+![441196968-1b22e252-0235-468b-a85f-1103a87d5631](https://github.com/user-attachments/assets/5cbb6b8b-00da-4e64-aca6-157a5e2aa211)
 
 **RESULTS**
+Thus the SR flipflop using verilog and validating their functionality using their functional tables is implemented successfully.
